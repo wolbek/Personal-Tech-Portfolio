@@ -1,0 +1,89 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.achievements {
+  background: var(--bg-secondary);
+  transition: background $transition-theme;
+
+  &__container {
+    @include section-container;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-3xl;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-xl;
+    max-width: 900px;
+    margin: 0 auto;
+
+    @include respond-to(tablet) {
+      grid-template-columns: 1fr;
+      max-width: 500px;
+    }
+  }
+}
+
+.achievement-card {
+  @include card;
+  @include gradient-border-hover;
+  padding: $spacing-2xl;
+  text-align: center;
+
+  &__icon-wrapper {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto $spacing-lg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-xl;
+    background: var(--tag-bg);
+    color: var(--accent-primary);
+    transition: background $transition-theme, color $transition-theme;
+  }
+
+  &__metric {
+    display: inline-block;
+    padding: $spacing-xs $spacing-lg;
+    background: var(--accent-gradient);
+    color: #fff;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    border-radius: $radius-full;
+    margin-bottom: $spacing-lg;
+    letter-spacing: 0.5px;
+  }
+
+  &__title {
+    font-family: $font-heading;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+    margin-bottom: $spacing-sm;
+    transition: color $transition-theme;
+  }
+
+  &__description {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    line-height: $line-height-normal;
+    transition: color $transition-theme;
+  }
+}
+
+.section-title {
+  @include section-title;
+}
+
+.section-title-line {
+  @include section-title-line;
+}
+
+.section-subtitle {
+  @include section-subtitle;
+}

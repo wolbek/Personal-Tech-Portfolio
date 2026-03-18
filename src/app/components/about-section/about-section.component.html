@@ -1,0 +1,84 @@
+<section id="about" class="about">
+  <div class="about__container">
+    <div class="about__header" appScrollAnimate="fade-up">
+      <h2 class="section-title">About Me</h2>
+      <div class="section-title-line"></div>
+      <p class="section-subtitle">Get to know me a little better</p>
+    </div>
+
+    <div class="bento-grid">
+      <div class="bento-card bento-card--bio" appScrollAnimate="fade-right">
+        <div class="about__avatar">
+          <div class="about__avatar-inner">
+            <span class="avatar-initials">AV</span>
+          </div>
+          <div class="about__avatar-ring"></div>
+        </div>
+        <p class="about__bio">{{ info.bio }}</p>
+      </div>
+
+      <div class="bento-stats" id="about-stats">
+        @for (stat of info.stats; track stat.label; let i = $index) {
+          <div class="bento-card bento-card--stat" appScrollAnimate="scale-in" [delay]="i * 0.1">
+            <span class="stat-value">{{ getAnimatedValue(stat) }}</span>
+            <span class="stat-label">{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="bento-card bento-card--highlight" appScrollAnimate="fade-up" [delay]="0.15">
+        <div class="highlight-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
+            <line x1="8" y1="21" x2="16" y2="21" />
+            <line x1="12" y1="17" x2="12" y2="21" />
+          </svg>
+        </div>
+        <h4>Building at Scale</h4>
+        <p>Scalable backends at <strong>Jio Platforms</strong> serving 5M+ users</p>
+      </div>
+
+      <div class="bento-card bento-card--highlight" appScrollAnimate="fade-up" [delay]="0.25">
+        <div class="highlight-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+            />
+          </svg>
+        </div>
+        <h4>Open Source</h4>
+        <p>Contributor to <strong>Brave Browser</strong> & open-source ecosystem</p>
+      </div>
+
+      <!--  
+      <div class="bento-card bento-card--highlight" appScrollAnimate="fade-up" [delay]="0.35">
+        <div class="highlight-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <h4>Published Researcher</h4>
+        <p>IEEE publication in <strong>ML & Credit Risk</strong> analysis</p>
+      </div>
+      -->
+    </div>
+  </div>
+</section>

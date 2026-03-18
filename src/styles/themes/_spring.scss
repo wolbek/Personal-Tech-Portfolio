@@ -1,0 +1,28 @@
+// Spring - Fresh green, lavender, sky blue
+[data-theme~='spring'] {
+  --accent-primary: #22c55e;
+  --accent-secondary: #a78bfa;
+  --accent-gradient: linear-gradient(135deg, #22c55e, #38bdf8);
+  --accent-gradient-hover: linear-gradient(135deg, #4ade80, #7dd3fc);
+  --accent-glow: rgba(34, 197, 94, 0.25);
+
+  --border-accent: rgba(34, 197, 94, 0.3);
+
+  --timeline-line: rgba(34, 197, 94, 0.2);
+  --timeline-dot: #22c55e;
+
+  --tag-bg: rgba(34, 197, 94, 0.12);
+  --tag-text: #4ade80;
+
+  --hero-gradient: radial-gradient(ellipse at 30% 50%, rgba(34, 197, 94, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 40%, rgba(167, 139, 250, 0.08) 0%, transparent 50%);
+
+  --shadow-glow: 0 0 20px rgba(34, 197, 94, 0.12);
+
+  --theme-hero-bg: url('/themes/spring-hero.jpg');
+  --theme-hero-overlay: linear-gradient(180deg, rgba(10, 10, 15, 0.4) 0%, rgba(10, 10, 15, 0.85) 100%);
+}
+
+[data-theme='light spring'] {
+  --theme-hero-overlay: linear-gradient(180deg, rgba(240, 253, 244, 0.4) 0%, rgba(240, 253, 244, 0.85) 100%);
+}

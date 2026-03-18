@@ -1,0 +1,122 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+:host {
+  display: contents;
+}
+
+.picker-group {
+  position: relative;
+}
+
+.picker-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: $radius-full;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: $font-weight-medium;
+  transition: all $transition-base;
+  border: 1px solid transparent;
+  cursor: pointer;
+
+  &:hover, &.active {
+    color: var(--accent-primary);
+    border-color: var(--border-accent);
+    background: var(--tag-bg);
+  }
+
+  @include respond-to(mobile) {
+    padding: 0 8px;
+    height: 32px;
+
+    .picker-label {
+      display: none;
+    }
+  }
+}
+
+.picker-popover {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 220px;
+  padding: 12px;
+  border-radius: $radius-lg;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-primary);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+  z-index: $z-modal;
+  animation: popover-in 0.2s ease;
+}
+
+@keyframes popover-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.popover-title {
+  font-size: 11px;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-tertiary);
+  padding: 0 8px 8px;
+  border-bottom: 1px solid var(--border-secondary);
+  margin-bottom: 8px;
+}
+
+.theme-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px;
+  border-radius: $radius-md;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all $transition-base;
+  text-align: left;
+
+  &:hover {
+    background: var(--bg-tertiary);
+  }
+
+  &.selected {
+    background: var(--tag-bg);
+    border-color: var(--border-accent);
+  }
+}
+
+.theme-preview {
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-sm;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--border-secondary);
+  flex-shrink: 0;
+}
+
+.theme-name {
+  flex: 1;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  color: var(--text-primary);
+}
+
+.check-icon {
+  color: var(--accent-primary);
+  flex-shrink: 0;
+}

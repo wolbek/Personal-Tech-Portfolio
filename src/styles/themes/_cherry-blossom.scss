@@ -1,0 +1,28 @@
+// Cherry Blossom - Soft pinks, rose, delicate
+[data-theme~='cherry-blossom'] {
+  --accent-primary: #ec4899;
+  --accent-secondary: #a3e635;
+  --accent-gradient: linear-gradient(135deg, #ec4899, #f9a8d4);
+  --accent-gradient-hover: linear-gradient(135deg, #f472b6, #fbcfe8);
+  --accent-glow: rgba(236, 72, 153, 0.25);
+
+  --border-accent: rgba(236, 72, 153, 0.3);
+
+  --timeline-line: rgba(236, 72, 153, 0.2);
+  --timeline-dot: #ec4899;
+
+  --tag-bg: rgba(236, 72, 153, 0.12);
+  --tag-text: #f472b6;
+
+  --hero-gradient: radial-gradient(ellipse at 30% 50%, rgba(236, 72, 153, 0.12) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 40%, rgba(249, 168, 212, 0.1) 0%, transparent 50%);
+
+  --shadow-glow: 0 0 20px rgba(236, 72, 153, 0.12);
+
+  --theme-hero-bg: url('/themes/cherry-blossom-hero.jpg');
+  --theme-hero-overlay: linear-gradient(180deg, rgba(10, 10, 15, 0.4) 0%, rgba(10, 10, 15, 0.85) 100%);
+}
+
+[data-theme='light cherry-blossom'] {
+  --theme-hero-overlay: linear-gradient(180deg, rgba(253, 242, 248, 0.4) 0%, rgba(253, 242, 248, 0.85) 100%);
+}

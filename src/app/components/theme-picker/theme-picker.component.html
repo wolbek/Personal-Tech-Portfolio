@@ -1,0 +1,104 @@
+<div class="picker-group">
+  <!--  
+  <button
+    class="picker-btn"
+    [class.active]="animeOpen()"
+    (click)="toggleAnime()"
+    aria-label="Anime themes"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="18"
+      height="18"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    >
+      <polygon
+        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+      />
+    </svg>
+    <span class="picker-label">Anime</span>
+  </button>
+
+  @if (animeOpen()) {
+    <div class="picker-popover">
+      <div class="popover-title">Anime Themes</div>
+      @for (t of animeThemes; track t.id) {
+        <button
+          class="theme-card"
+          [class.selected]="isActive(t.id)"
+          (click)="selectTheme(t.id)"
+        >
+          <div class="theme-preview" [style.background-image]="'url(' + t.preview + ')'"></div>
+          <span class="theme-name">{{ t.label }}</span>
+          @if (isActive(t.id)) {
+            <svg class="check-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          }
+        </button>
+      }
+    </div>
+  }
+</div>
+-->
+
+  <div class="picker-group">
+    <button
+      class="picker-btn"
+      [class.active]="seasonalOpen()"
+      (click)="toggleSeasonal()"
+      aria-label="Seasonal themes"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="18"
+        height="18"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 17 3.5 17 3.5s-1 6-6 10c4-1 7-4 7-4a7 7 0 0 1-7 10.5z"
+        />
+        <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
+      </svg>
+      <span class="picker-label">Seasons</span>
+    </button>
+
+    @if (seasonalOpen()) {
+      <div class="picker-popover">
+        <div class="popover-title">Seasonal Themes</div>
+        @for (t of seasonalThemes; track t.id) {
+          <button class="theme-card" [class.selected]="isActive(t.id)" (click)="selectTheme(t.id)">
+            <div class="theme-preview" [style.background-image]="'url(' + t.preview + ')'"></div>
+            <span class="theme-name">{{ t.label }}</span>
+            @if (isActive(t.id)) {
+              <svg
+                class="check-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            }
+          </button>
+        }
+      </div>
+    }
+  </div>
+</div>

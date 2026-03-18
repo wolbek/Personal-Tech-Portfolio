@@ -1,0 +1,46 @@
+[data-theme~='light'] {
+  --bg-primary: #fafafe;
+  --bg-secondary: #f0f0f5;
+  --bg-tertiary: #e8e8f0;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f5f5fa;
+  --bg-nav: rgba(250, 250, 254, 0.85);
+
+  --text-primary: #1a1a2e;
+  --text-secondary: #555570;
+  --text-tertiary: #8888a0;
+  --text-inverse: #ffffff;
+
+  --accent-primary: #5a52e0;
+  --accent-secondary: #00b894;
+  --accent-gradient: linear-gradient(135deg, #5a52e0, #00b894);
+  --accent-gradient-hover: linear-gradient(135deg, #6860ee, #00d4aa);
+  --accent-glow: rgba(90, 82, 224, 0.2);
+
+  --border-primary: rgba(0, 0, 0, 0.08);
+  --border-secondary: rgba(0, 0, 0, 0.04);
+  --border-accent: rgba(90, 82, 224, 0.25);
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-glow: 0 0 20px rgba(90, 82, 224, 0.1);
+
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(0, 0, 0, 0.06);
+
+  --scrollbar-track: #f0f0f5;
+  --scrollbar-thumb: #c0c0d0;
+
+  --hero-gradient:
+    radial-gradient(ellipse at 20% 50%, rgba(90, 82, 224, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(0, 184, 148, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(90, 82, 224, 0.04) 0%, transparent 40%);
+
+  --timeline-line: rgba(90, 82, 224, 0.15);
+  --timeline-dot: #5a52e0;
+
+  --code-bg: #f0f0f5;
+  --tag-bg: rgba(90, 82, 224, 0.1);
+  --tag-text: #5a52e0;
+}

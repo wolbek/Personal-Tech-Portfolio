@@ -1,0 +1,181 @@
+@use 'variables' as *;
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (max-width: #{$mobile}) { @content; }
+  } @else if $breakpoint == tablet {
+    @media (max-width: #{$tablet}) { @content; }
+  } @else if $breakpoint == desktop {
+    @media (max-width: #{$desktop}) { @content; }
+  } @else if $breakpoint == wide {
+    @media (min-width: #{$wide}) { @content; }
+  }
+}
+
+@mixin min-width($breakpoint) {
+  @media (min-width: $breakpoint) { @content; }
+}
+
+@mixin glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: $radius-lg;
+}
+
+@mixin card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-primary);
+  border-radius: $radius-lg;
+  box-shadow: var(--shadow-sm);
+  transition: transform $transition-base,
+              box-shadow $transition-base,
+              background $transition-theme,
+              border-color $transition-theme;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md), var(--shadow-glow);
+    background: var(--bg-card-hover);
+  }
+}
+
+@mixin gradient-text {
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@mixin section-container {
+  max-width: $max-width;
+  margin: 0 auto;
+  padding: $section-padding $spacing-xl;
+
+  @include respond-to(tablet) {
+    padding: $spacing-3xl $spacing-lg;
+  }
+
+  @include respond-to(mobile) {
+    padding: $spacing-2xl $spacing-md;
+  }
+}
+
+@mixin section-title {
+  font-family: $font-heading;
+  font-size: $font-size-4xl;
+  font-weight: $font-weight-bold;
+  color: var(--text-primary);
+  margin-bottom: $spacing-md;
+  transition: color $transition-theme;
+
+  @include respond-to(tablet) {
+    font-size: $font-size-3xl;
+  }
+}
+
+@mixin section-subtitle {
+  font-size: $font-size-lg;
+  color: var(--text-secondary);
+  margin-bottom: $spacing-3xl;
+  transition: color $transition-theme;
+}
+
+@mixin section-title-line {
+  width: 60px;
+  height: 3px;
+  background: var(--accent-gradient);
+  border-radius: $radius-full;
+  margin: $spacing-sm auto $spacing-md;
+}
+
+@mixin gradient-border-hover {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, transparent 40%, var(--accent-primary) 100%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  &:hover::before {
+    opacity: 0.5;
+  }
+}
+
+@mixin button-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-xl;
+  background: var(--accent-gradient);
+  color: #fff;
+  border: none;
+  border-radius: $radius-full;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: transform $transition-fast, box-shadow $transition-base;
+  text-decoration: none;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md), var(--shadow-glow);
+    background: var(--accent-gradient-hover);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin button-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-xl;
+  background: transparent;
+  color: var(--accent-primary);
+  border: 2px solid var(--accent-primary);
+  border-radius: $radius-full;
+  font-size: $font-size-base;
+  font-weight: $font-weight-semibold;
+  cursor: pointer;
+  transition: all $transition-base;
+  text-decoration: none;
+
+  &:hover {
+    background: var(--accent-primary);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+@mixin tag {
+  display: inline-flex;
+  align-items: center;
+  padding: $spacing-xs $spacing-md;
+  background: var(--tag-bg);
+  color: var(--tag-text);
+  border-radius: $radius-full;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-medium;
+  transition: background $transition-theme, color $transition-theme;
+}
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

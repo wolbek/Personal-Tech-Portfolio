@@ -1,0 +1,205 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $nav-height;
+  z-index: $z-sticky;
+  background: transparent;
+  transition: background $transition-base, box-shadow $transition-base,
+              backdrop-filter $transition-base;
+
+  &.scrolled {
+    @include glass-card;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid var(--border-secondary);
+    box-shadow: var(--shadow-sm);
+  }
+
+  &__container {
+    max-width: $max-width;
+    margin: 0 auto;
+    padding: 0 $spacing-xl;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include respond-to(mobile) {
+      padding: 0 $spacing-md;
+    }
+  }
+
+  &__logo {
+    font-family: $font-mono;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: color $transition-theme;
+
+    .logo-bracket {
+      @include gradient-text;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: $spacing-sm;
+
+    @include respond-to(tablet) {
+      display: none;
+    }
+  }
+
+  &__link {
+    position: relative;
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color $transition-base;
+    border-radius: $radius-md;
+
+    &:hover {
+      color: var(--text-primary);
+    }
+
+    &.active {
+      color: var(--accent-primary);
+    }
+
+    &.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 2px;
+      background: var(--accent-gradient);
+      border-radius: $radius-full;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: $spacing-md;
+  }
+}
+
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: $radius-full;
+  color: var(--text-secondary);
+  transition: all $transition-base;
+  background: var(--bg-tertiary);
+  border: 1px solid transparent;
+
+  &:hover {
+    color: var(--accent-primary);
+    transform: rotate(30deg);
+    border-color: var(--border-accent);
+  }
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+
+  @include respond-to(tablet) {
+    display: flex;
+  }
+
+  span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: $radius-full;
+    transition: all $transition-base;
+  }
+
+  &.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  &.open span:nth-child(2) {
+    opacity: 0;
+  }
+
+  &.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+}
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: $nav-height;
+  right: -100%;
+  width: 280px;
+  height: calc(100vh - #{$nav-height});
+  background: var(--bg-secondary);
+  border-left: 1px solid var(--border-primary);
+  z-index: $z-overlay;
+  transition: right $transition-base;
+  padding: $spacing-xl;
+
+  @include respond-to(tablet) {
+    display: block;
+  }
+
+  &.open {
+    right: 0;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__link {
+    display: block;
+    padding: $spacing-md;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+    color: var(--text-secondary);
+    border-radius: $radius-md;
+    transition: all $transition-base;
+    cursor: pointer;
+
+    &:hover, &.active {
+      color: var(--accent-primary);
+      background: var(--tag-bg);
+    }
+  }
+}
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: calc(#{$z-overlay} - 1);
+
+  @include respond-to(tablet) {
+    display: block;
+  }
+}

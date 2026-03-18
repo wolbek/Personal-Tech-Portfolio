@@ -1,0 +1,129 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.education {
+  background: var(--bg-secondary);
+  transition: background $transition-theme;
+
+  &__container {
+    @include section-container;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-3xl;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xl;
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  &__card {
+    @include card;
+    padding: $spacing-xl $spacing-2xl;
+    display: flex;
+    gap: $spacing-xl;
+    align-items: center;
+
+    @include respond-to(mobile) {
+      flex-direction: column;
+      text-align: center;
+      padding: $spacing-xl;
+    }
+  }
+
+  &__icon-wrapper {
+    width: 68px;
+    height: 68px;
+    min-width: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-xl;
+    background: var(--accent-gradient);
+    color: #fff;
+  }
+
+  &__level-badge {
+    display: inline-block;
+    padding: 2px $spacing-md;
+    background: var(--tag-bg);
+    color: var(--tag-text);
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    border-radius: $radius-full;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: $spacing-sm;
+    transition: background $transition-theme, color $transition-theme;
+  }
+
+  &__degree {
+    font-family: $font-heading;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+    margin-bottom: $spacing-xs;
+    transition: color $transition-theme;
+  }
+
+  &__institution {
+    font-size: $font-size-sm;
+    color: var(--accent-primary);
+    font-weight: $font-weight-medium;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__university {
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    margin-bottom: $spacing-sm;
+    transition: color $transition-theme;
+  }
+
+  &__meta {
+    display: flex;
+    gap: $spacing-lg;
+    flex-wrap: wrap;
+
+    @include respond-to(mobile) {
+      justify-content: center;
+    }
+  }
+
+  &__gpa,
+  &__period {
+    display: inline-flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: var(--text-secondary);
+    transition: color $transition-theme;
+
+    svg {
+      color: var(--accent-secondary);
+    }
+  }
+
+  &__gpa {
+    color: var(--accent-primary);
+    font-weight: $font-weight-bold;
+  }
+}
+
+.section-title {
+  @include section-title;
+}
+
+.section-title-line {
+  @include section-title-line;
+}
+
+.section-subtitle {
+  @include section-subtitle;
+}

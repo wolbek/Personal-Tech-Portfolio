@@ -1,0 +1,235 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.experience {
+  background: var(--bg-secondary);
+  transition: background $transition-theme;
+
+  &__container {
+    @include section-container;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-3xl;
+  }
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--timeline-line);
+    transform: translateX(-50%);
+
+    @include respond-to(tablet) {
+      left: 20px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    width: 50%;
+    padding-bottom: $spacing-3xl;
+
+    &--left {
+      padding-right: $spacing-2xl;
+      text-align: right;
+
+      .timeline__dot {
+        right: -9px;
+      }
+
+      .timeline__card {
+        text-align: left;
+      }
+
+      @include respond-to(tablet) {
+        padding-right: 0;
+        padding-left: 52px;
+        text-align: left;
+        width: 100%;
+
+        .timeline__dot {
+          left: 13px;
+          right: auto;
+        }
+      }
+    }
+
+    &--right {
+      margin-left: 50%;
+      padding-left: $spacing-2xl;
+
+      .timeline__dot {
+        left: -9px;
+      }
+
+      @include respond-to(tablet) {
+        margin-left: 0;
+        padding-left: 52px;
+        width: 100%;
+
+        .timeline__dot {
+          left: 13px;
+        }
+      }
+    }
+  }
+
+  &__dot {
+    position: absolute;
+    top: 24px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--timeline-dot);
+    border: 3px solid var(--bg-secondary);
+    z-index: 2;
+    box-shadow: 0 0 0 4px var(--accent-glow);
+    transition: background $transition-theme, border-color $transition-theme;
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  &__card {
+    @include card;
+    padding: $spacing-xl;
+  }
+
+  &__card-header {
+    margin-bottom: $spacing-lg;
+  }
+
+  &__role {
+    font-family: $font-heading;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+    margin-bottom: $spacing-xs;
+    transition: color $transition-theme;
+  }
+
+  &__company {
+    display: block;
+    font-size: $font-size-base;
+    color: var(--accent-primary);
+    font-weight: $font-weight-medium;
+    margin-bottom: $spacing-xs;
+  }
+
+  &__period {
+    font-size: $font-size-sm;
+    color: var(--text-tertiary);
+    transition: color $transition-theme;
+  }
+
+  &__subprojects {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+    margin-bottom: $spacing-lg;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $spacing-sm;
+    margin-top: $spacing-lg;
+  }
+}
+
+.subproject {
+  border: 1px solid var(--border-primary);
+  border-radius: $radius-md;
+  overflow: hidden;
+  transition: border-color $transition-base;
+
+  &:hover, &.expanded {
+    border-color: var(--border-accent);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: $spacing-md;
+    color: var(--text-primary);
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+    cursor: pointer;
+    transition: background $transition-base, color $transition-theme;
+
+    &:hover {
+      background: var(--bg-tertiary);
+    }
+  }
+
+  &__name {
+    text-align: left;
+  }
+
+  &__chevron {
+    flex-shrink: 0;
+    transition: transform $transition-base;
+    color: var(--text-tertiary);
+
+    .expanded & {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__content {
+    padding: 0 $spacing-md $spacing-md;
+  }
+}
+
+.bullet-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  li {
+    position: relative;
+    padding-left: $spacing-lg;
+    font-size: $font-size-sm;
+    color: var(--text-secondary);
+    line-height: $line-height-normal;
+    transition: color $transition-theme;
+
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent-primary);
+    }
+  }
+}
+
+.tag {
+  @include tag;
+}
+
+.section-title {
+  @include section-title;
+}
+
+.section-title-line {
+  @include section-title-line;
+}
+
+.section-subtitle {
+  @include section-subtitle;
+}

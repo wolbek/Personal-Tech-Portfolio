@@ -1,0 +1,72 @@
+<section id="experience" class="experience">
+  <div class="experience__container">
+    <div class="experience__header" appScrollAnimate="fade-up">
+      <h2 class="section-title">Experience</h2>
+      <div class="section-title-line"></div>
+      <p class="section-subtitle">My professional journey so far</p>
+    </div>
+
+    <div class="timeline">
+      @for (exp of experiences; track exp.id; let i = $index; let isEven = $even) {
+        <div
+          class="timeline__item"
+          [class.timeline__item--right]="isEven"
+          [class.timeline__item--left]="!isEven"
+          [appScrollAnimate]="isEven ? 'fade-left' : 'fade-right'"
+        >
+          <div class="timeline__dot"></div>
+          <div class="timeline__card">
+            <div class="timeline__card-header">
+              <h3 class="timeline__role">{{ exp.role }}</h3>
+              <span class="timeline__company">{{ exp.company }}</span>
+              <span class="timeline__period">{{ exp.period }}</span>
+            </div>
+
+            @if (exp.subProjects) {
+              <div class="timeline__subprojects">
+                @for (project of exp.subProjects; track project.name) {
+                  <div class="subproject" [class.expanded]="isExpanded(project.name)">
+                    <button class="subproject__header" (click)="toggleProject(project.name)">
+                      <span class="subproject__name">{{ project.name }}</span>
+                      <svg
+                        class="subproject__chevron"
+                        xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      >
+                        <polyline points="6 9 12 15 18 9"/>
+                      </svg>
+                    </button>
+                    @if (isExpanded(project.name)) {
+                      <div class="subproject__content">
+                        <ul class="bullet-list">
+                          @for (bullet of project.bullets; track bullet) {
+                            <li>{{ bullet }}</li>
+                          }
+                        </ul>
+                      </div>
+                    }
+                  </div>
+                }
+              </div>
+            }
+
+            @if (exp.bullets) {
+              <ul class="bullet-list">
+                @for (bullet of exp.bullets; track bullet) {
+                  <li>{{ bullet }}</li>
+                }
+              </ul>
+            }
+
+            <div class="timeline__tags">
+              @for (tag of exp.tags; track tag) {
+                <span class="tag">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

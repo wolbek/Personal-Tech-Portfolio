@@ -1,0 +1,28 @@
+// Autumn - Amber, burnt orange, burgundy
+[data-theme~='autumn'] {
+  --accent-primary: #d97706;
+  --accent-secondary: #881337;
+  --accent-gradient: linear-gradient(135deg, #d97706, #c2410c);
+  --accent-gradient-hover: linear-gradient(135deg, #f59e0b, #dc2626);
+  --accent-glow: rgba(217, 119, 6, 0.3);
+
+  --border-accent: rgba(217, 119, 6, 0.3);
+
+  --timeline-line: rgba(217, 119, 6, 0.2);
+  --timeline-dot: #d97706;
+
+  --tag-bg: rgba(217, 119, 6, 0.12);
+  --tag-text: #fbbf24;
+
+  --hero-gradient: radial-gradient(ellipse at 30% 50%, rgba(217, 119, 6, 0.15) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 30%, rgba(136, 19, 55, 0.1) 0%, transparent 50%);
+
+  --shadow-glow: 0 0 20px rgba(217, 119, 6, 0.15);
+
+  --theme-hero-bg: url('/themes/autumn-hero.jpg');
+  --theme-hero-overlay: linear-gradient(180deg, rgba(10, 10, 15, 0.45) 0%, rgba(10, 10, 15, 0.85) 100%);
+}
+
+[data-theme='light autumn'] {
+  --theme-hero-overlay: linear-gradient(180deg, rgba(255, 251, 235, 0.45) 0%, rgba(255, 251, 235, 0.85) 100%);
+}

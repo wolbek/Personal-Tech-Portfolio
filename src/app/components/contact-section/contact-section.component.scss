@@ -1,0 +1,231 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.contact {
+  background: var(--bg-secondary);
+  transition: background $transition-theme;
+
+  &__container {
+    @include section-container;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-3xl;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-3xl;
+    max-width: 900px;
+    margin: 0 auto;
+
+    @include respond-to(tablet) {
+      grid-template-columns: 1fr;
+      gap: $spacing-2xl;
+    }
+  }
+
+  &__info-title {
+    font-family: $font-heading;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+    margin-bottom: $spacing-md;
+    transition: color $transition-theme;
+  }
+
+  &__info-text {
+    font-size: $font-size-base;
+    color: var(--text-secondary);
+    line-height: $line-height-relaxed;
+    margin-bottom: $spacing-2xl;
+    transition: color $transition-theme;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+}
+
+.contact-detail {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-md;
+  border-radius: $radius-md;
+  transition: background $transition-base;
+
+  &:hover {
+    background: var(--bg-tertiary);
+  }
+
+  &__icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-md;
+    background: var(--tag-bg);
+    color: var(--accent-primary);
+    flex-shrink: 0;
+    transition: background $transition-theme, color $transition-theme;
+  }
+
+  &__label {
+    display: block;
+    font-size: $font-size-xs;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+    transition: color $transition-theme;
+  }
+
+  &__value {
+    display: block;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: var(--text-primary);
+    transition: color $transition-theme;
+  }
+}
+
+.contact__form-wrapper {
+  @include card;
+  padding: $spacing-2xl;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-lg;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  label {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    color: var(--text-primary);
+    transition: color $transition-theme;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    padding: $spacing-md;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-primary);
+    border-radius: $radius-md;
+    color: var(--text-primary);
+    font-size: $font-size-base;
+    transition: all $transition-base;
+    outline: none;
+
+    &::placeholder {
+      color: var(--text-tertiary);
+    }
+
+    &:focus {
+      border-color: var(--accent-primary);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+  }
+
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  &.has-error {
+    input,
+    textarea {
+      border-color: #ef4444;
+    }
+  }
+}
+
+.form-error {
+  font-size: $font-size-xs;
+  color: #ef4444;
+}
+
+.submit-btn {
+  @include button-primary;
+  width: 100%;
+  justify-content: center;
+
+  &:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin-slow 0.6s linear infinite;
+}
+
+.form-global-error {
+  padding: $spacing-md;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: $radius-md;
+  color: #ef4444;
+  font-size: $font-size-sm;
+  text-align: center;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.success-message {
+  text-align: center;
+  padding: $spacing-3xl $spacing-xl;
+  color: var(--accent-secondary);
+
+  svg {
+    margin-bottom: $spacing-lg;
+  }
+
+  h3 {
+    font-family: $font-heading;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-bold;
+    color: var(--text-primary);
+    margin-bottom: $spacing-sm;
+    transition: color $transition-theme;
+  }
+
+  p {
+    color: var(--text-secondary);
+    transition: color $transition-theme;
+  }
+}
+
+.section-title {
+  @include section-title;
+}
+
+.section-title-line {
+  @include section-title-line;
+}
+
+.section-subtitle {
+  @include section-subtitle;
+}

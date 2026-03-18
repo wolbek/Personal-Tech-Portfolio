@@ -1,0 +1,214 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.about {
+  background: var(--bg-primary);
+  transition: background $transition-theme;
+
+  &__container {
+    @include section-container;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: $spacing-3xl;
+  }
+
+  &__avatar {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+  }
+
+  &__avatar-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--accent-gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+
+    .avatar-initials {
+      font-family: $font-heading;
+      font-size: $font-size-3xl;
+      font-weight: $font-weight-extrabold;
+      color: #fff;
+    }
+  }
+
+  &__avatar-ring {
+    position: absolute;
+    inset: -6px;
+    border-radius: 50%;
+    border: 2px dashed var(--accent-primary);
+    opacity: 0.4;
+    animation: spin-slow 20s linear infinite;
+  }
+
+  &__bio {
+    font-size: $font-size-base;
+    color: var(--text-secondary);
+    line-height: $line-height-relaxed;
+    transition: color $transition-theme;
+  }
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: $spacing-lg;
+
+  @include respond-to(tablet) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include respond-to(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bento-card {
+  @include card;
+  padding: $spacing-xl;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, transparent 40%, var(--accent-primary) 100%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+  }
+
+  &:hover::before {
+    opacity: 0.5;
+  }
+
+  &--bio {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing-lg;
+    text-align: center;
+
+    @include respond-to(tablet) {
+      grid-column: 1 / -1;
+      grid-row: auto;
+      flex-direction: row;
+      text-align: left;
+    }
+
+    @include respond-to(mobile) {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+
+  &--stat {
+    text-align: center;
+    padding: $spacing-lg;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    backdrop-filter: blur(12px);
+  }
+
+  &--highlight {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+
+    h4 {
+      font-family: $font-heading;
+      font-size: $font-size-base;
+      font-weight: $font-weight-semibold;
+      color: var(--text-primary);
+    }
+
+    p {
+      font-size: $font-size-sm;
+      color: var(--text-secondary);
+      line-height: $line-height-relaxed;
+
+      strong {
+        color: var(--text-primary);
+      }
+    }
+  }
+}
+
+.bento-stats {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $spacing-lg;
+
+  @include respond-to(tablet) {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  @include respond-to(mobile) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stat-value {
+  display: block;
+  font-family: $font-heading;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-extrabold;
+  @include gradient-text;
+  margin-bottom: $spacing-xs;
+}
+
+.stat-label {
+  font-size: $font-size-xs;
+  color: var(--text-secondary);
+  font-weight: $font-weight-medium;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.highlight-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: $radius-md;
+  background: var(--tag-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-primary);
+  margin-bottom: $spacing-xs;
+}
+
+.section-title {
+  @include section-title;
+}
+
+.section-title-line {
+  width: 60px;
+  height: 3px;
+  background: var(--accent-gradient);
+  border-radius: $radius-full;
+  margin: $spacing-sm auto $spacing-md;
+}
+
+.section-subtitle {
+  @include section-subtitle;
+}
