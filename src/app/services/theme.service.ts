@@ -80,9 +80,9 @@ export class ThemeService {
     if (isPlatformBrowser(this.platformId)) {
       const stored = localStorage.getItem(STORAGE_BASE) as BaseTheme | null;
       if (stored === 'dark' || stored === 'light') return stored;
-      if (window.matchMedia?.('(prefers-color-scheme: light)').matches) return 'light';
+      if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) return 'dark';
     }
-    return 'dark';
+    return 'light';
   }
 
   private getInitialSpecial(): SpecialTheme | null {
